@@ -14,7 +14,7 @@ window.addEventListener('resize', resizeCanvas);
 // Configuration
 const config = {
     gridSize: 16,
-    particleCount: 50,
+    particleCount: window.innerWidth <= 768 ? 20 : 50,
     connectionDistance: 150,
     particleSpeed: 0.3,
     colors: {
@@ -61,6 +61,18 @@ const particles = [];
 for (let i = 0; i < config.particleCount; i++) {
     particles.push(new Particle());
 }
+
+// Handle particle count on resize
+window.addEventListener('resize', () => {
+    const newCount = window.innerWidth <= 768 ? 20 : 50;
+    if (newCount < particles.length) {
+        particles.length = newCount;
+    } else {
+        while (particles.length < newCount) {
+            particles.push(new Particle());
+        }
+    }
+});
 
 // Draw connections between nearby particles
 function drawConnections() {
