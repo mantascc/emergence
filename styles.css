@@ -1,0 +1,202 @@
+/* Color Variables */
+:root {
+    --bg-level-1: #0F1016;
+    --bg-level-2: #151621;
+    --accent-1: #7081de;
+    --accent-2: #B4E03C;
+    --text-primary: #F5F5F7;
+    --text-secondary: #86868B;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
+    background-color: var(--bg-level-1);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Layer 1: Fixed Background Canvas */
+#background-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Layer 2: Fixed Center Overlay */
+.center-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+    max-width: 800px;
+    padding: 0 32px;
+}
+
+.main-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 64px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Layer 3: Scrollable Cards Container */
+.cards-container {
+    position: relative;
+    z-index: 2;
+    margin-top: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 800px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 64px;
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--bg-level-2);
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 0 100px 100px var(--bg-level-2);
+    transition: transform 0.2s ease;
+}
+
+.card h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.card-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.card-content p {
+    margin-bottom: 16px;
+}
+
+.card-content p:last-child {
+    margin-bottom: 0;
+}
+
+.card-content strong {
+    color: var(--accent-2);
+    font-weight: 600;
+}
+
+/* Day Sections */
+.day-section {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(134, 134, 139, 0.2);
+}
+
+.day-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.day-section h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--accent-1);
+}
+
+.day-section p {
+    margin-bottom: 8px;
+}
+
+/* Lists */
+.card-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card-content li {
+    margin-bottom: 16px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.card-content li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-1);
+}
+
+.closing-note {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(134, 134, 139, 0.2);
+    font-style: italic;
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 32px 24px;
+    }
+
+    .card h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .card-content {
+        font-size: 12px;
+    }
+
+    .day-section h3 {
+        font-size: 16px;
+    }
+
+    .day-section {
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+    }
+
+    .center-overlay {
+        padding: 0 24px;
+    }
+}
